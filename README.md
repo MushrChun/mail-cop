@@ -2,6 +2,10 @@
 
 *A broker between SendGrid and Mailgun*
 
+Mail Cop plays the role of a broker when it comes to sending emails. Even though there are marvellous SaaS emails delivery providers such as SendGrid and Mailgun, our customised email format may not meet the requirement of them at the same time. On the other hand, their service may go down sometime. 
+
+To deliver a more stable and user-friendly service for internal usage, Mail Cop can choose SaaS email delivery providers automatically. If one of them go down, it will go for another one immediately. This is transparent to end users. If both of the providers go down, users get the notification of the failure and are suggested to redo in the future. The redo times can be set manually with the default value of once.
+
 ## How To Boot
 
 ```sh
@@ -35,7 +39,7 @@ docker run -p 8080:8080 es6/api-service
 ```
 
 ## API Doc
-This project provide a RESTful endpoint for sending email
+This project provides a RESTful endpoint for sending emails
 
 1. The URL is [domain]:[port]/api/mails
 
@@ -43,7 +47,7 @@ This project provide a RESTful endpoint for sending email
 
     localhost:8080/api/mails
 
-2. Compatible HTTP method is POST
+2. Compatible HTTP method is POST only
 
 3. Mail content shoule be wrapped into a HTTP Message Body through application/json format
 
@@ -61,7 +65,7 @@ This project provide a RESTful endpoint for sending email
         }
     }
     ```
-    N.B. All parameter mentioned are compulsory and strings in from, to, cc, bcc should be a valid email address.
+    N.B. All parameter mentioned are compulsory and strings in from, to, cc, bcc should be valid email addresses.
 
     For example:
     ```json
