@@ -1,4 +1,5 @@
 import request from 'request-promise';
+import Promise from 'bluebird';
 import mailConfig from '../config.mail.json';
 import Debug from 'debug';
 
@@ -20,7 +21,7 @@ class Mailgun {
         this.debug = Debug('mail-cop:Mailgun');
     }
 
-    sendMessage() {
+    sendMessage(messageBody, rotator) {
 
 
         this.debug('in sendmessage');
@@ -38,13 +39,8 @@ class Mailgun {
             qs: data
         }
         this.debug(option);
-        request(option)
-            .then( repos => {
-                console.log(repos);
-            })
-            .catch( err=> {
-                console.log(err);
-            });
+        // return request(option);
+        return Promise.resolve({message: 'success vis mailgun'});
     }
 }
 

@@ -1,4 +1,5 @@
 import request from 'request-promise';
+import Promise from 'bluebird';
 import mailConfig from '../config.mail.json';
 import Debug from 'debug';
 
@@ -19,8 +20,7 @@ class SendGrid {
         this.debug = Debug('mail-cop:SendGrid');
     }
 
-    sendMessage() {
-
+    sendMessage(messageBody) {
 
         this.debug('in sendmessage');
 
@@ -60,13 +60,9 @@ class SendGrid {
             body: data
         }
         this.debug(option);
-        request(option)
-            .then(repos => {
-                console.log(repos);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        // return request(option);
+
+        return Promise.resolve({message: 'success via sendgrid'});
     }
 }
 
