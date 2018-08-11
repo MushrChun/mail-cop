@@ -1,7 +1,5 @@
-import { version } from '../../package.json';
 import { Router } from 'express';
 import MailBroker from '../lib/mailBroker';
-import * as string from '../string';
 import { messageRes } from '../lib/util';
 import Debug from 'debug';
 

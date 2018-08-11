@@ -46,8 +46,9 @@ class SendGrid {
             body: data
         }
         this.debug(JSON.stringify(option));
-        return request(option);
+        // return request(option);
 
+        return Promise.reject({message: 'fail via sendgrid'});
         // return Promise.resolve({ message: 'success via sendgrid' });
     }
 }

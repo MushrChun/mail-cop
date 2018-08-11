@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import Mailgun from './mailgun';
 import SendGrid from './sendgrid';
 import * as string from '../string';
+import { FailGrid } from './failGrid';
 
 class MailBroker {
 
@@ -16,32 +17,40 @@ class MailBroker {
         ];
     }
 
-    sendMessage(messageBody) {
+    sendMessage(messageBody, failGrid = new FailGrid()) {
         const firstProvider = this.providers[0];
         this.debug('firstProvider: ', firstProvider);
         switch (firstProvider) {
             case 'mailgun': {
+
+                if(!failGrid.allowRedo('mailgun')) return Promise.reject(string.FAIL);
+
                 return this.mailGun.sendMessage(messageBody)
                     .then(success => {
                         this.debug('in mailgun success: ', success);
                         return Promise.resolve(string.SUCCESS);
                     })
                     .catch(err => {
-                        this.debug(err);
+                        this.debug('in mailgun fail: ', err);
+                        failGrid.accumulate('mailgun');
                         this.rotateProvider();
-                        return this.sendMessage(messageBody);
+                        return this.sendMessage(messageBody, failGrid);
                     });
             }
             case 'sendgrid': {
+
+                if(!failGrid.allowRedo('sendgrid')) return Promise.reject(string.FAIL);
+
                 return this.sendGrid.sendMessage(messageBody)
                     .then(success => {
                         this.debug('in sendgrid success: ', success);
                         return Promise.resolve(string.SUCCESS);
                     })
                     .catch(err => {
-                        this.debug(err);
+                        this.debug('in sendgrid fail: ', err);
+                        failGrid.accumulate('sendgrid');
                         this.rotateProvider();
-                        return this.sendMessage(messageBody);
+                        return this.sendMessage(messageBody, failGrid);
                     });
             }
             default: this.debug('none suitable provider');
