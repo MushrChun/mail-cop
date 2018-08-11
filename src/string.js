@@ -1,3 +1,9 @@
 export const SUCCESS = 'Email Sent Successfully';
 export const FAIL = 'Fail to send the Email';
 export const SERVICE_BROKEN = 'Mail Cop Internal Error';
+export const INVALID_FROM = 'FROM field is not valid, email format required';
+export const INVALID_TO = 'TO field is not valid, email array format required';
+export const INVALID_CC = 'CC field is not valid, email array format required';
+export const INVALID_BCC = 'BCC field is not valid, email array format required';
+export const INVALID_SUBJECT = 'SUBJECT field is not valid, non empty string required';
+export const INVALID_TEXT = 'TEXT field is not valid, non empty string required';

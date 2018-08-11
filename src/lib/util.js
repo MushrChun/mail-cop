@@ -10,30 +10,39 @@ import * as string from '../string';
  *			collection.find({}, toRes(res));
  *		}
  */
-export function toRes(res, status=200) {
+export function toRes(res, status = 200) {
 	return (err, thing) => {
 		if (err) return res.status(500).send(err);
 
-		if (thing && typeof thing.toObject==='function') {
+		if (thing && typeof thing.toObject === 'function') {
 			thing = thing.toObject();
 		}
 		res.status(status).json(thing);
 	};
 }
 
-export const messageRes = (hasErr, res, message) => {
-	if (hasErr) {
+// if hasErr ture, the status code should  be 5XX, internal error
+export const messageRes = (hasInternalErr, res, message) => {
+	if (hasInternalErr) {
 		const payload = {
 			status: 500,
 			message: string.SERVICE_BROKEN
 		}
-		res.status(500).json({ payload});
+		res.status(500).json({ payload });
 	}
 	else {
-		const payload = {
-			status: 200,
-			message: string.SUCCESS
+		if (message) {
+			const payload = {
+				status: 400,
+				message
+			}
+			res.status(400).json({ payload });
+		} else {
+			const payload = {
+				status: 200,
+				message: string.SUCCESS
+			}
+			res.status(200).json({ payload });
 		}
-		res.status(200).json({ payload});
 	}
 }

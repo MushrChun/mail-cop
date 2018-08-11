@@ -35,7 +35,8 @@
     "morgan": "^1.8.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "resource-router-middleware": "^0.6.0"
+    "resource-router-middleware": "^0.6.0",
+    "validator": "^10.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
