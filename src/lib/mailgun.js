@@ -21,26 +21,23 @@ class Mailgun {
         this.debug = Debug('mail-cop:Mailgun');
     }
 
-    sendMessage(messageBody, rotator) {
-
-
-        this.debug('in sendmessage');
+    sendMessage(messageBody) {
 
         const data = {
-            from: 'mushrchun@gmail.com',
-            to: 'mushrchun@gmail.com',
-            cc: 'mushrchun@gmail.com',
-            bcc: 'mushrchun@gmail.com',
-            subject: 'Test',
-            text: 'Testing'
+            from: messageBody.from,
+            to: messageBody.to.join(','),
+            cc: messageBody.cc.join(','),
+            bcc: messageBody.bcc.join(','),
+            subject: messageBody.subject,
+            text: messageBody.text
         };
         const option = {
             ...this.basicOption,
             qs: data
         }
         this.debug(option);
-        // return request(option);
-        return Promise.resolve({message: 'success vis mailgun'});
+        return request(option);
+        // return Promise.resolve({message: 'success vis mailgun'});
     }
 }
 

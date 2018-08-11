@@ -12,20 +12,22 @@ class MailBroker {
         this.debug = Debug('mail-cop:Broker');
 
         this.providers = [
-            'mailgun', 'sendgrid'
+            'sendgrid', 'mailgun' 
         ];
     }
 
     sendMessage(messageBody) {
         const firstProvider = this.providers[0];
+        this.debug('firstProvider: ', firstProvider);
         switch (firstProvider) {
             case 'mailgun': {
                 return this.mailGun.sendMessage(messageBody)
                     .then(success => {
-                        this.debug(success)
+                        this.debug('in mailgun success: ', success);
                         return Promise.resolve(string.SUCCESS);
                     })
                     .catch(err => {
+                        this.debug(err);
                         this.rotateProvider();
                         return this.sendMessage(messageBody);
                     });
@@ -33,10 +35,11 @@ class MailBroker {
             case 'sendgrid': {
                 return this.sendGrid.sendMessage(messageBody)
                     .then(success => {
-                        this.debug(success)
-                        return Promise.resolve(success);
+                        this.debug('in sendgrid success: ', success);
+                        return Promise.resolve(string.SUCCESS);
                     })
                     .catch(err => {
+                        this.debug(err);
                         this.rotateProvider();
                         return this.sendMessage(messageBody);
                     });

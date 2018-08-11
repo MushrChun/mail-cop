@@ -22,36 +22,22 @@ class SendGrid {
 
     sendMessage(messageBody) {
 
-        this.debug('in sendmessage');
-
         const data = {
             "personalizations": [
                 {
-                    "to": [
-                        {
-                            "email": "mushrchun@gmail.com"
-                        }
-                    ],
-                    "cc": [
-                        {
-                            "email": "mushrchun@outlook.com"
-                        }
-                    ],
-                    "bcc": [
-                        {
-                            "email": "mushrchun.i@icloud.com"
-                        }
-                    ],
-                    "subject": "Test"
+                    "to": messageBody.to.map(item => { return { email: item } }),
+                    "cc": messageBody.cc.map(item => { return { email: item } }),
+                    "bcc": messageBody.bcc.map(item => { return { email: item } }),
+                    "subject": messageBody.subject
                 }
             ],
             "from": {
-                "email": "mushrchun@gmail.com"
+                "email": messageBody.from
             },
             "content": [
                 {
                     "type": "text/plain",
-                    "value": "Testing"
+                    "value": messageBody.text
                 }
             ]
         }
@@ -59,10 +45,10 @@ class SendGrid {
             ...this.basicOption,
             body: data
         }
-        this.debug(option);
-        // return request(option);
+        this.debug(JSON.stringify(option));
+        return request(option);
 
-        return Promise.resolve({message: 'success via sendgrid'});
+        // return Promise.resolve({ message: 'success via sendgrid' });
     }
 }
 

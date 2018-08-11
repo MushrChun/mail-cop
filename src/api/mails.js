@@ -12,7 +12,7 @@ export default ({ config, db }) => {
 
 	api.post('/', (req, res) => {
 
-		const messageBody = req.body;
+		const messageBody = req.body.message;
 		broker
 			.sendMessage(messageBody)
 			.then( success => {
