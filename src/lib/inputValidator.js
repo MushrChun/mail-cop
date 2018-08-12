@@ -1,5 +1,7 @@
 import validator from 'validator';
+
 import * as string from '../string';
+
 
 export const validate = (message) => {
     const errorGrid = getErrorGrid();

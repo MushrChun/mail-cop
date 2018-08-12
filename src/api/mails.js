@@ -1,7 +1,9 @@
 import { Router } from 'express';
+import Debug from 'debug';
+
 import MailBroker from '../lib/mailBroker';
 import { messageRes } from '../lib/util';
-import Debug from 'debug';
+
 
 export default ({ config, db }) => {
 	let api = Router();

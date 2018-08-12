@@ -1,5 +1,7 @@
 import { expect } from 'chai';
+
 import RedoJudger from '../../src/lib/redoJudger';
+
 
 describe('Reject redo accroding to maxRedo times', function () {
     it('should reject after one try when maxRedo is one', function () {

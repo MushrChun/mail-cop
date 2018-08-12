@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { validate } from '../../src/lib/inputValidator';
 import * as sample from './sampleInput.json';
 
+
 describe('Input Validator Tools', function () {
     it('should reject when FROM is not valid', function () {
         expect(validate(sample.fromInvalid.message)).to.deep.equal(sample.fromInvalidGrid);

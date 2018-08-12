@@ -1,7 +1,8 @@
 import request from 'request-promise';
-import Promise from 'bluebird';
+
 import mailConfig from '../config.mail.json';
 import Debug from 'debug';
+
 
 class Mailgun {
 

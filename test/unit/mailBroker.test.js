@@ -8,6 +8,7 @@ import { SendGridFailFake, SendGridSuccessFake, MailgunFailFake, MailgunSuccessF
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
+
 describe('MailBroker', function () {
 
   describe('One provider goes down', function () {

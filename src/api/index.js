@@ -1,6 +1,9 @@
-import { name, version } from '../../package.json';
+
 import { Router } from 'express';
+
+import { name, version } from '../../package.json';
 import mails from './mails';
+
 
 export default ({ config, db }) => {
 	let api = Router();

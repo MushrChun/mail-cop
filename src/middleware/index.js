@@ -1,5 +1,7 @@
 import { Router } from 'express';
+
 import validationMiddleware from './inputValidation';
+
 
 export default ({ config, db }) => {
 	let routes = Router();
