@@ -6,7 +6,7 @@ import Debug from 'debug';
 export default ({ config, db }) => {
 	let api = Router();
 	const broker = new MailBroker();
-	const debug = Debug('mail-cop:router');
+	const debug = Debug('mail-cop:MailRouter');
 
 	api.post('/', (req, res) => {
 

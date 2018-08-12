@@ -1,0 +1,164 @@
+{
+    "fromInvalid": {
+        "message": {
+            "from": "xx.net",
+            "to": [
+                "xx1@xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3@xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5@xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "xxx",
+            "text": "xxx"
+        }
+    },
+    "fromInvalidGrid": {
+        "from": false,
+        "to": true,
+        "cc": true,
+        "bcc": true,
+        "subject": true,
+        "text": true
+    },
+    "toInvalid": {
+        "message": {
+            "from": "xx@xx.net",
+            "to": [
+                "xx1xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3@xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5@xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "xxx",
+            "text": "xxx"
+        }
+    },
+    "toInvalidGrid": {
+        "from": true,
+        "to": false,
+        "cc": true,
+        "bcc": true,
+        "subject": true,
+        "text": true
+    },
+    "ccInvalid": {
+        "message": {
+            "from": "xx@xx.net",
+            "to": [
+                "xx1@xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5@xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "xxx",
+            "text": "xxx"
+        }
+    },
+    "ccInvalidGrid": {
+        "from": true,
+        "to": true,
+        "cc": false,
+        "bcc": true,
+        "subject": true,
+        "text": true
+    },
+    "bccInvalid": {
+        "message": {
+            "from": "xx@xx.net",
+            "to": [
+                "xx1@xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3@xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "xxx",
+            "text": "xxx"
+        }
+    },
+    "bccInvalidGrid": {
+        "from": true,
+        "to": true,
+        "cc": true,
+        "bcc": false,
+        "subject": true,
+        "text": true
+    },
+    "subjectInvalid": {
+        "message": {
+            "from": "xx@xx.net",
+            "to": [
+                "xx1@xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3@xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5@xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "",
+            "text": "xxx"
+        }
+    },
+    "subjectInvalidGrid": {
+        "from": true,
+        "to": true,
+        "cc": true,
+        "bcc": true,
+        "subject": false,
+        "text": true
+    },
+    "textInvalid": {
+        "message": {
+            "from": "xx@xx.net",
+            "to": [
+                "xx1@xx.com",
+                "xx2@xx.xyz"
+            ],
+            "cc": [
+                "xx3@xx.org",
+                "xx4@xx.net"
+            ],
+            "bcc": [
+                "xx5@xx.io",
+                "xx6@xx.com"
+            ],
+            "subject": "xxx",
+            "text": ""
+        }
+    },
+    "textInvalidGrid": {
+        "from": true,
+        "to": true,
+        "cc": true,
+        "bcc": true,
+        "subject": true,
+        "text": false
+    }
+}

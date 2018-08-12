@@ -1,8 +1,8 @@
-export class FailGrid {
+export default class RedoJudger {
 
-    constructor() {
+    constructor(maxRedo = 1) {
         this.grid = new Map();
-        this.maxRedo = 1;
+        this.maxRedo = maxRedo;
     }
 
     accumulate(label) {

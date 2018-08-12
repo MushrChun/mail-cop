@@ -1,5 +1,10 @@
 export const SUCCESS = 'Email sent successfully';
+export const SUCCESS_SENGGRID = 'Email sent successfully via SendGrid';
+export const SUCCESS_MAILGUN  = 'Email sent successfully via Mailgun';
 export const FAIL = 'Fail to send the email';
+export const FAIL_SENGGRID = 'Fail to send the email via SengdGrid';
+export const FAIL_MAILGUN = 'Fail to send the email via Mailgun';
+export const FAIL_BOTH = 'Fail to send the email via Mailgun or SendGrid';
 export const SERVICE_BROKEN = 'Mail Cop Internal Error';
 export const INVALID_FROM = 'FROM field is not valid, email required';
 export const INVALID_TO = 'TO field is not valid, email array required';

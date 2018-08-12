@@ -36,9 +36,7 @@ class Mailgun {
             qs: data
         }
         this.debug(JSON.stringify(option));
-        // return request(option);
-        return Promise.reject({message: 'fail via mailgun'});
-        // return Promise.resolve({message: 'success vis mailgun'});
+        return request(option);
     }
 }
 
