@@ -7,9 +7,11 @@ Mail Cop plays the role of a broker when it comes to sending emails. Even though
 To deliver a more stable and user-friendly service for internal usage, Mail Cop can choose SaaS email delivery providers automatically. If one of them go down, it will go for another one immediately. This is transparent to end users. If both of the providers go down, users get the notification of the failure and are suggested to redo in the future. The redo times can be set manually with the default value of once.
 
 ## How To Boot
+### Prerequisite
+- node >= 8
+- copy 'sample-config.mail.json' to 'config.mail.json' and fix API credentials inside
 
 ```sh
-
 # Install dependencies
 npm install
 
@@ -19,23 +21,28 @@ PORT=8080 npm run dev
 # Start production server:
 PORT=8080 npm start
 ```
-Docker Support
+Deploy via Docker 
 ------
 ```sh
 cd project-root-dir
 
-# Build your docker
-docker build -t es6/api-service .
-#            ^      ^           ^
-#          tag  tag name      Dockerfile location
+# Build the image
+docker build -t map-cop/api-service .
 
-# run your docker
-docker run -p 8080:8080 es6/api-service
-#                 ^            ^
-#          bind the port    container tag
-#          to your host
-#          machine port   
+# Run the docker image
+docker run -p 8080:8080 map-cop/api-service
+```
 
+## How To Test
+### Prerequisite
+- mocha 
+```sh
+npm install --global mocha
+```
+
+### Run Test Suite
+```sh
+npm test
 ```
 
 ## API Doc
