@@ -53,6 +53,7 @@ class SendGrid {
         }
         this.debug(JSON.stringify(option));
         // return Promise.reject();
+        // return Promise.resolve();
         return request(option);
 
     }

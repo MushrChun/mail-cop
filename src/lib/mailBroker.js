@@ -15,7 +15,7 @@ class MailBroker {
         this.debug = Debug('mail-cop:Broker');
 
         this.providers = [
-            'mailgun', 'sendgrid',
+            'sendgrid','mailgun', 
         ];
     }
 
