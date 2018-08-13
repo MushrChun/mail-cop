@@ -27,8 +27,6 @@ class SendGrid {
             "personalizations": [
                 {
                     "to": messageBody.to.map(item => { return { email: item } }),
-                    "cc": messageBody.cc.map(item => { return { email: item } }),
-                    "bcc": messageBody.bcc.map(item => { return { email: item } }),
                     "subject": messageBody.subject
                 }
             ],
@@ -42,11 +40,19 @@ class SendGrid {
                 }
             ]
         }
+
+        const ccArray = messageBody.cc.filter((val => val)).map(item => { return { email: item } });
+        if(ccArray.length > 0) data.personalizations[0].cc = ccArray;
+
+        const bccArray = messageBody.bcc.filter((val => val)).map(item => { return { email: item } });
+        if(bccArray.length > 0) data.personalizations[0].bcc = bccArray;
+
         const option = {
             ...this.basicOption,
             body: data
         }
         this.debug(JSON.stringify(option));
+        // return Promise.reject();
         return request(option);
 
     }

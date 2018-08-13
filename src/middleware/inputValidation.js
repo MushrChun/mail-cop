@@ -11,6 +11,7 @@ export default ({ config, db }) => {
 
     api.post('/mails', (req, res, next) => {
 
+        debug(req.body);
         const errorGrid = validate(req.body.message);
         const result = genNotifications(errorGrid);
 

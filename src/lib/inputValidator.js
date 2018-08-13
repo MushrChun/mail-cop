@@ -10,8 +10,8 @@ export const validate = (message) => {
 
     errorGrid.from = validator.isEmail(message.from);
     errorGrid.to = Array.isArray(message.to) && message.to.every(((item) => validator.isEmail(item)));
-    errorGrid.cc = Array.isArray(message.cc) && message.cc.every(((item) => validator.isEmail(item)));
-    errorGrid.bcc = Array.isArray(message.bcc) && message.bcc.every(((item) => validator.isEmail(item)));
+    errorGrid.cc = Array.isArray(message.cc) && message.cc.every(((item) => validator.isEmail(item) || validator.isEmpty(item)));
+    errorGrid.bcc = Array.isArray(message.bcc) && message.bcc.every(((item) => validator.isEmail(item) || validator.isEmpty(item)));
     errorGrid.subject = !!message.subject && typeof message.subject==='string' && message.subject.length > 0;
     errorGrid.text = !!message.text && typeof message.text==='string' &&  message.text.length > 0;
 
